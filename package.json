@@ -2,6 +2,9 @@
   "name": "@xianyu709/auto-script",
   "version": "1.0.0",
   "description": "",
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "./dist/index.mjs",
   "scripts": {
     "stub": "pnpm unbuild --stub"
