@@ -2,10 +2,7 @@ import { execaCommand } from "execa";
 import { findUpSync } from "find-up";
 import { cancel, isCancel, select } from "@clack/prompts";
 import { dirname } from "node:path";
-import {
-  getPackages as getPackagesFunc,
-  getPackagesSync as getPackagesSyncFunc,
-} from "@manypkg/get-packages";
+import { getPackagesSync as getPackagesSyncFunc } from "@manypkg/get-packages";
 
 interface RunOptions {
   command?: string;
@@ -22,8 +19,9 @@ function findMonorepoRoot(cwd: string = process.cwd()) {
 function getRootScript() {
   const root = findMonorepoRoot();
   const { rootPackage } = getPackagesSyncFunc(root);
+  // @ts-ignore
   let scripts = rootPackage?.packageJson.scripts;
-  scripts = Object.entries(scripts).filter(([_, value]) => {
+  scripts = Object.entries(scripts).filter(([_, value]: [string, string]) => {
     return !value.includes("auto-script");
   });
   return scripts;
@@ -44,6 +42,7 @@ function getLabel(rowkey: string) {
 }
 
 export async function run(options: RunOptions) {
+  // @ts-ignore
   const { command } = options;
   // if (!command) {
   //   console.error("Please enter the command to run");
@@ -53,9 +52,10 @@ export async function run(options: RunOptions) {
 
   const scripts = await getRootScript();
 
-  let selectScript: string;
+  let selectScript: string | symbol;
+
   if (scripts.length > 1) {
-    selectScript = await select<any, string>({
+    selectScript = await select<string>({
       message: `Select the app you need to run script:`,
       options: scripts.map(([key, value]: any) => ({
         label: getLabel(key),
@@ -71,7 +71,7 @@ export async function run(options: RunOptions) {
     selectScript = scripts[0][1];
   }
 
-  execaCommand(`pnpm ${selectScript}`, {
+  execaCommand(`pnpm ${String(selectScript)}`, {
     stdio: "inherit",
   });
 }

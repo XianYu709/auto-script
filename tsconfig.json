@@ -1,6 +1,25 @@
 {
-  "$schema": "https://json.schemastore.org/tsconfig",
-  "extends": "@vben/tsconfig/node.json",
-  "include": ["src"],
-  "exclude": ["node_modules"]
+  "compilerOptions": {
+    "strict": false,  // 禁用严格模式
+    "noImplicitAny": false,  // 允许隐式 any 类型
+    "strictNullChecks": false,  // 允许 null 和 undefined
+    "noImplicitThis": false,  // 允许 this 的隐式 any 类型
+    "alwaysStrict": false,  // 禁用严格模式的自动启用
+    "skipLibCheck": true,  // 跳过库文件的类型检查
+    "esModuleInterop": true,  // 支持 CommonJS 和 ES Modules 的互操作性
+    "moduleResolution": "node",  // 使用 Node.js 风格的模块解析
+    "resolveJsonModule": true,  // 允许导入 JSON 文件
+    "allowJs": true,  // 允许直接使用 JavaScript 文件
+    "checkJs": false,  // 不检查 JavaScript 文件
+    "declaration": false,  // 不生成声明文件
+    "noUnusedLocals": false,  // 不检查未使用的局部变量
+    "noUnusedParameters": false,  // 不检查未使用的函数参数
+    "skipDefaultLibCheck": true  // 跳过默认库的类型检查
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

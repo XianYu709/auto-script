@@ -1,8 +1,6 @@
 import { consola } from "consola";
 import colors from "chalk";
-
 import { cac } from "cac";
-
 import { run } from "./run";
 
 try {
