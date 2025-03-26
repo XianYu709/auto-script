@@ -1,0 +1,32 @@
+{
+  "name": "@xianyu709/auto-script",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./dist/index.mjs",
+  "scripts": {
+    "stub": "pnpm unbuild --stub"
+  },
+  "bin": {
+    "auto-script": "./bin/auto-script.mjs"
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "auto-script",
+    "cli"
+  ],
+  "author": "xianyu709",
+  "license": "ISC",
+  "packageManager": "pnpm@10.6.5",
+  "dependencies": {
+    "@clack/prompts": "^0.9.1",
+    "@manypkg/get-packages": "^2.2.2",
+    "cac": "^6.7.14",
+    "chalk": "^5.4.1",
+    "consola": "^3.4.0",
+    "execa": "^9.5.2",
+    "find-up": " ^7.0.0",
+    "unbuild": "^3.5.0"
+  }
+}
