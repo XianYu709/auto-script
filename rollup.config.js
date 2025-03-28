@@ -12,10 +12,6 @@ export default defineConfig([
     output: [
       {
         dir: 'dist', // 输出目标文件夹
-        format: 'cjs', // 输出 commonjs 格式
-      },
-      {
-        dir: 'dist', // 输出目标文件夹
         format: 'es', // 使用 es 格式，生成 .mjs 文件
       },
     ],
